@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     @opinions = @user.opinions
     @users = User.all
   end
-
+  
   def create
-    @user = User.new(params.require(:user).permit(:fullname, :username))
+    @user = User.new(params.require(:user).permit(:name, :email, :phone, :password))
     if @user.save
       log_in @user
       redirect_to opinions_path
@@ -36,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:fullname, :username, :image, :cover_image)
+    params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password)
   end
 end

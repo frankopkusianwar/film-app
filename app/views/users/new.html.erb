@@ -10,13 +10,22 @@
       <%end%>
     <%end%>
     <div class="form-group">
-      <%= f.label :fullname %>
-      <%= f.text_field :fullname, class: 'form-control', placeholder: 'fullname'%>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'name'%>
     </div>
     <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control', placeholder: 'username'%>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'email'%>
     </div>
+    <div class="form-group">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control', placeholder: 'phone'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.text_field :password, class: 'form-control', placeholder: 'password'%>
+    </div>
+    
     <button type="submit" class="btn btn-primary">Create Acccount</button>
   <% end %>
 </div>

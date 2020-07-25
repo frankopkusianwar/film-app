@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  validates :username, presence: true, uniqueness: true
-  validates :fullname, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :phone, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
   has_many :opinions, dependent: :destroy
 
   has_many :active_relationships, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
