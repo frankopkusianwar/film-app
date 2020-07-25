@@ -7,7 +7,7 @@ class OpinionsController < ApplicationController
   end
 
   def create
-    opinion = Opinion.new(params.require(:opinion).permit(:Text))
+    opinion = Opinion.new(params.require(:opinion).permit(:Text, :clip))
     opinion.user_id = session[:user_id]
     opinion.save
     redirect_to opinions_path
