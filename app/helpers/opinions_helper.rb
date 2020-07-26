@@ -4,7 +4,7 @@ module OpinionsHelper
     if like
       link_to('Dislike!', opinion_like_path(id: like.id, opinion_id: opinion.id), method: :delete)
     else
-      link_to('Like!', opinion_likes_path(opinions_id: opinion.id), method: :post)
+      link_to('Like!', opinion_likes_path(opinion_id: opinion.id), method: :post)
     end
   end
 

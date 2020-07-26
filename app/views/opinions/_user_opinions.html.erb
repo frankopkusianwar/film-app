@@ -9,10 +9,10 @@
             <span class='opinion-date'> <%= op.created_at.strftime("%Y/%m/%d") %></span>
             <p class="font-weight-normal"><%= op.Text %></p>
             <%= video_tag url_for(op.clip), controls: "", class: ""%>
+            <%= image_tag url_for(op.clip), controls: "", class: ""%>
             <div class='post-liking'>
-              <%= like_count(op) %>
               <%= like_or_dislike_btn(op) %>
-              <p><%= pluralize(op.likes.count, "Like")%>  </p>
+              <p><%= pluralize(op.likes.count, "Like")%>
             </div>
             <% @op = op %>
             <%= render 'comment_form'%>
