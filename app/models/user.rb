@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
   has_many :opinions, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_many :active_relationships, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
