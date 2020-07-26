@@ -2,14 +2,17 @@
   <% @opinions.each do |op|%>
     <div class="bg-white mt-2">
       <div class="row ml-3">
-        <div class="col-12 p-1 mt-1 prof-img-3 d-flex">
+        <div class="col-12 p-1 mt-1 d-flex">
           <%= image_tag op.user.image, class: "mr-2" if op.user.image.attached? %>
           <div class="font-weight-bold">
             <%# <%= op.user.name %>
             <span class='opinion-date'> <%= op.created_at.strftime("%Y/%m/%d") %></span>
             <p class="font-weight-normal"><%= op.Text %></p>
-            <%= video_tag url_for(op.clip), controls: "", class: ""%>
-            <%= image_tag url_for(op.clip), controls: "", class: ""%>
+            <% if op.clip.content_type == "video/mp4" %>
+              <%= video_tag url_for(op.clip), controls: "", class: ""%>
+            <%else%>
+              <%= image_tag url_for(op.clip), class: "img-fluid">
+            <% end %>
             <div class='post-liking'>
               <%= like_or_dislike_btn(op) %>
               <p><%= pluralize(op.likes.count, "Like")%>
