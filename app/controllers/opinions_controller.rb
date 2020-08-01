@@ -12,4 +12,10 @@ class OpinionsController < ApplicationController
     opinion.save
     redirect_to opinions_path
   end
+
+  def destroy
+    @opinion = Opinion.find(params[:id])
+    @opinion.destroy
+    redirect_to opinions_path
+  end
 end
