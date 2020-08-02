@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create, :new] 
   resources :followings, only: [:create, :destroy]
+  resources :projects
 end

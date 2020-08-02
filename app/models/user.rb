@@ -2,6 +2,12 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :phone, presence: true
   validates :email, presence: true
+  validates :name, presence: true
+  validates :firstName, presence: true
+  validates :lastName, presence: true
+  validates :DOB, presence: true
+  validates :userType, presence: true
+  validates :nationality, presence: true
   validates :password, presence: true
   has_many :opinions, dependent: :destroy
   has_many :likes, dependent: :destroy

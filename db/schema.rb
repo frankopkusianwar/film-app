@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_091247) do
+ActiveRecord::Schema.define(version: 2020_08_02_104853) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_07_26_091247) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "iso"
+  end
+
   create_table "followings", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -67,6 +74,24 @@ ActiveRecord::Schema.define(version: 2020_07_26_091247) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "description"
+    t.string "DOP"
+    t.string "videoLength"
+    t.string "artType"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "iso"
+    t.integer "country_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "photo"
     t.string "coverimage"
@@ -76,6 +101,13 @@ ActiveRecord::Schema.define(version: 2020_07_26_091247) do
     t.string "email"
     t.string "name"
     t.string "password"
+    t.string "state"
+    t.string "firstName"
+    t.string "lastName"
+    t.string "DOB"
+    t.string "userType"
+    t.text "bio"
+    t.string "nationality"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
