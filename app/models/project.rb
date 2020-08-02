@@ -5,4 +5,5 @@ class Project < ApplicationRecord
   validates :featureImage, presence: true
 
   has_one_attached :featureImage
+  belongs_to  :user
 end

@@ -32,6 +32,10 @@
       <%= f.label :featureImage %>
       <%= f.file_field :featureImage, class: 'form-control', placeholder: ''%>
     </div>
-    <button type="submit" class="btn btn-primary">Add Project</button>
+    <% if button(session[:user_id]) != nil? %>
+      <%= render  "projects/button2" %>
+    <% else %>
+      <%= render  "projects/button1" %>
+    <% end %>
   <% end %>
 </div>
