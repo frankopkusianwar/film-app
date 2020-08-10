@@ -33,9 +33,9 @@
       <%= f.file_field :featureImage, class: 'form-control', placeholder: ''%>
     </div>
     <% if button(session[:user_id]) != nil? %>
-      <%= render  "projects/button2" %>
+      <%= render  "projects/button" %>
     <% else %>
-      <%= render  "projects/button1" %>
+      <%= render  "projects/button2" %>
     <% end %>
   <% end %>
 </div>
