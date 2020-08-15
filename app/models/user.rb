@@ -26,6 +26,14 @@ class User < ApplicationRecord
 
   default_scope { order('created_at DESC') }
 
+  # def active_for_authentication? 
+  #   super && approved? 
+  # end 
+  
+  # def inactive_message 
+  #   approved? ? super : :not_approved
+  # end
+
   # Following a user.
   def follow(other_user)
     following << other_user
