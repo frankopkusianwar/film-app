@@ -24,7 +24,4 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :new] 
   resources :followings, only: [:create, :destroy]
   resources :projects
-  # resources :admins, only: [:create, :index, :new]
-  # root 'users#profile'
-  
 end
