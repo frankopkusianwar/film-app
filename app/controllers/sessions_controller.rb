@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
 
   def create
     if params[:email] != nil
-      @user = User.find_by(email: params[:email])
+      user = User.find_by(email: params[:email])
     else 
-      @user = User.find_by(email: params[:phone])
+      user = User.find_by(email: params[:phone])
     end
-    if @user && @user.password == params[:password]
-      log_in @user
+    if user && user.password == params[:password]
+      log_in user
       redirect_to opinions_path
+      byebug
     else 
        flash[:alert] = 'wrong User'
        redirect_to root_path
