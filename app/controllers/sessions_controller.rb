@@ -16,10 +16,9 @@ class SessionsController < ApplicationController
     if user && user.password == params[:password]
       log_in user
       redirect_to opinions_path
-      byebug
     else 
        flash[:alert] = 'wrong User'
-       redirect_to root_path
+       render new_session_path
     end
   end
 

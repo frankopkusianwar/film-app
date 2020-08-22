@@ -2,7 +2,6 @@ module AdminSessionsHelper
 
 # Logs in the given user.
   def log_in_admin(admin)
-    byebug
     session[:admin_id] = admin.id
   end
 
