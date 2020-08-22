@@ -9,7 +9,7 @@ class AdminSessionsController < ApplicationController
   def create
     @admin = Admin.find_by(email: params[:admin_session][:email])
     if @admin && @admin.password == params[:admin_session][:password]
-      log_in @admin
+      log_in_admin @admin
       redirect_to admins_path
     else 
        flash[:alert] = 'wrong User'
@@ -18,7 +18,7 @@ class AdminSessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out_admin
     redirect_to root_path
   end
 end

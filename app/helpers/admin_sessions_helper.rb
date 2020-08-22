@@ -6,12 +6,8 @@ module AdminSessionsHelper
     session[:admin_id] = admin.id
   end
 
-  #def logged_in?
-    #!current_admin.nil?
-  #end
-
   # Logs out the current user.
-  def log_out
+  def log_out_admin
     session.delete(:admin_id)
     @current_admin = nil
   end
