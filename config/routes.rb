@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'sessions#index'
-  post '/', to: 'admin_sessions#create'
+  # post '/', to: 'admin_sessions#create'
   post '/', to: 'sessions#create'
   # 
   resources :admins, only: [:create, :index, :new]
-  resources :admin_sessions, only: [:new, :index]
+  resources :admin_sessions, only: [:new]
 
   
   resources :sessions, only: [:create, :index, :new ]
