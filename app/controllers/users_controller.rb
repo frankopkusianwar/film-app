@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_user, only: [:show]
 
-  def profile
-    redirect_to user_path(current_user)
-  end
-
   def new
     @user = User.new
   end
@@ -39,18 +35,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB, profile))
-    if params[:user][:profile_type] == 'Guest'
-      @user.profile = Guest.create
-    elsif params[:user][:profile_type] == 'Admin'
-      @user.profile = Admin.create
-    end
+    @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB))
     if @user.save
-      session[:user_id] = @user.id
       redirect_to new_project_path
     else
       @errors = @user.errors.full_messages
-        render 'projects/new'
+      render 'users/new'
     end
   end
 
@@ -64,7 +54,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB, profile_type)
+    params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB)
   end
 
 end

@@ -3,7 +3,7 @@
     <h3>Signup Here</h3>
     <p>To share your farming opinions</p>
   </div>
-  <%= form_for (@user) do |f|  %>
+  <%= form_with model: @user, local: true do |f| %>
     <%if @errors%>
       <%@errors.each do |err|%>
         <small class="text-danger"><%= err%></small><br>
@@ -49,13 +49,8 @@
       <%= f.label :password %>
       <%= f.text_field :password, class: 'form-control', placeholder: 'password'%>
     </div>
-
-
- <div class="form-group ">
-      <%= f.label :profile %>
-      <%= select(:user, :profile, [['Admin', 'Admin'],['Guest', 'Guest']], class: 'form-control', placeholder: 'user profile') %>
-    </div><br/>
     
-    <%= f.submit, 'Create Account'%>
+        <button type="submit" class="btn btn-primary">Create Acccount</button>
+
   <% end %>
 </div>

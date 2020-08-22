@@ -12,8 +12,6 @@ class User < ApplicationRecord
   has_many :opinions, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one :project
-  belongs_to :profile, polymorphic: true
-  accepts_nested_attributes_for :profile
 
   
   has_many :active_relationships, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy

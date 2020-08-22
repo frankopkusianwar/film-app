@@ -1,3 +1,5 @@
 class Admin < ApplicationRecord
-    has_one :user, as: :profile
+    validates :email, presence: true
+    validates :password, presence: true
+    # has_one :user, as: :profile
 end

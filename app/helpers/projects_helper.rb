@@ -16,13 +16,13 @@ module ProjectsHelper
       puts response.headers
     end
 
-    def button(user)
-        current_user = User.find_by(id: user)
-        if current_user.project != nil? 
-            email = current_user.email
-        end
-        nil
-    end
+    # def button(user)
+    #     current_user = User.find_by(id: user)
+    #     if current_user.project != nil? 
+    #         email = current_user.email
+    #     end
+    #     nil
+    # end
 
     def redirect_to_admin_page
         redirect_to 'admins#index'

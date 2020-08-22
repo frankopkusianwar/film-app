@@ -14,14 +14,12 @@ class AdminsController < ApplicationController
     end
     
     def create
-        @admin = Admin.new(params.require(:admin).permit(:email, :password))
-        log_in(@admin)
-        if @admin.save
-          flash[:notice] = 'Admin created successfully!'
-          redirect_to admins_path
-        else
-          @errors = @admin.errors.full_messages
-          render 'admin/new'
-        end
+      @admin = Admin.new(params.require(:admin).permit(:email, :password))
+      if @admin.save
+        redirect_to admins_path
+      else
+        @errors = @user.errors.full_messages
+        render 'admin/new'
       end
+    end
 end

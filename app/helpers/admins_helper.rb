@@ -14,4 +14,9 @@ module AdminsHelper
     @current_admin = nil
   end
 
+
+  def current_admin?(admin)
+    admin && admin == current_admin
+  end
+
 end
