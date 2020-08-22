@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   # post '/', to: 'admin_sessions#create'
   post '/', to: 'sessions#create'
   # 
+
+  get '/admin_login', to: 'admin_sessions#new'
+  post '/admin_login', to: 'admin_sessions#create'
   resources :admins, only: [:create, :index, :new]
-  resources :admin_sessions, only: [:new]
 
   
   resources :sessions, only: [:create, :index, :new ]

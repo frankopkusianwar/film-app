@@ -7,8 +7,8 @@ class AdminSessionsController < ApplicationController
   end
 
   def create
-    @admin = Admin.find_by(email: params[:email])
-    if @admin && @admin.password == params[:password]
+    @admin = Admin.find_by(email: params[:admin_session][:email])
+    if @admin && @admin.password == params[:admin_session][:password]
       log_in @admin
       redirect_to admins_path
     else 

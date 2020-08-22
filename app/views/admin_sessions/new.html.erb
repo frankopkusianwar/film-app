@@ -3,7 +3,7 @@
     <h3>Login Here</h3>
   </div>
   <small class="text-danger"><%= alert %></small>
-  <%= form_with model: @admin, local: true, :url => sessions_path do |f| %>
+  <%= form_with(url: admin_login_path, scope: :admin_session, local: true) do |f| %>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.text_field :email, required: true, id: 'email', class: 'form-control', placeholder: 'email'%>
