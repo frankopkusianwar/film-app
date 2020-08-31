@@ -1,0 +1,22 @@
+<div class="container w-50 mt-5 border border rounded border-light p-5">
+  <div class="text-center">
+    <h3>Admins Only</h3>
+  </div>
+  <%= form_with model: @admin, local: true do |f| %>
+    <%if @errors%>
+      <%@errors.each do |err|%>
+        <small class="text-danger"><%= err%></small><br>
+      <%end%>
+    <%end%>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'email'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.text_field :password, class: 'form-control', placeholder: 'password'%>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Create Admin</button>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_one :project
 
+  
   has_many :active_relationships, class_name: 'Following', foreign_key: 'follower_id', dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
 
@@ -25,6 +26,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   default_scope { order('created_at DESC') }
+
+  # def active_for_authentication? 
+  #   super && approved? 
+  # end 
+  
+  # def inactive_message 
+  #   approved? ? super : :not_approved
+  # end
 
   # Following a user.
   def follow(other_user)

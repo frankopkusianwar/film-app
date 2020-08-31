@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [:show]
+
   def new
     @user = User.new
   end
@@ -31,21 +33,28 @@ class UsersController < ApplicationController
     @opinions = @user.opinions
     @users = User.all
   end
-  
+
   def create
     @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB))
     if @user.save
-      session[:user_id] = @user.id
       redirect_to new_project_path
     else
       @errors = @user.errors.full_messages
-      render 'projects/new'
+      render 'users/new'
     end
   end
 
-  private
+  def check_user
+    redirect_to root_path if current_user != User.find(params[:id])
 
+    flash[:alert] = 'You can only see your own profile.' if current_user != User.find(params[:id])
+  end
+
+
+  private
+  
   def user_params
     params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB)
   end
+
 end

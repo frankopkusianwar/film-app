@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_131443) do
+ActiveRecord::Schema.define(version: 2020_08_22_091352) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_08_02_131443) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "function"
+    t.string "email"
+    t.string "password"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -56,6 +64,12 @@ ActiveRecord::Schema.define(version: 2020_08_02_131443) do
     t.index ["followed_id"], name: "index_followings_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_followings_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_followings_on_follower_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "function"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -109,6 +123,10 @@ ActiveRecord::Schema.define(version: 2020_08_02_131443) do
     t.string "userType"
     t.text "bio"
     t.string "nationality"
+    t.boolean "approved", default: false
+    t.string "notes"
+    t.string "profile_type"
+    t.integer "profile_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
