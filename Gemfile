@@ -62,3 +62,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'sendgrid-ruby'
 gem 'dotenv-rails' 
+
+gem "noticed", "~> 1.2"
