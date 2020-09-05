@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [:show]
 
   def new
     @user = User.new
@@ -7,12 +6,10 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find_by(params[:id])
-    @following = @user.following
   end
 
   def followers 
     @user = User.find_by(params[:id])
-    @followers = @user.followers
   end
 
   def edit
@@ -43,13 +40,6 @@ class UsersController < ApplicationController
       render 'users/new'
     end
   end
-
-  def check_user
-    redirect_to root_path if current_user != User.find(params[:id])
-
-    flash[:alert] = 'You can only see your own profile.' if current_user != User.find(params[:id])
-  end
-
 
   private
   
