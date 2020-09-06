@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create, :new] 
   resources :followings, only: [:create, :destroy]
-  resources :projects
+  get 'projects/new', to: 'projects#new'
+  post 'projects/new', to: 'projects#create'
 end

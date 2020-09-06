@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB))
     if @user.save
-      redirect_to new_project_path
+      log_in(@user)
+      redirect_to projects_new_path
     else
       @errors = @user.errors.full_messages
       render 'users/new'

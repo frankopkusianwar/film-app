@@ -2,7 +2,7 @@
   <div class="text-center">
     <h3>Add Project</h3>
   </div>
-  <%= form_with model: @project, local: true do |f| %>
+  <%= form_for :project  do |f| %>
     <%if @errors%>
       <%@errors.each do |err|%>
         <small class="text-danger"><%= err%></small><br>
