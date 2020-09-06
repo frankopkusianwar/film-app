@@ -2,8 +2,8 @@
       <nav class='opinion_nav mb-3 mt-3'>
         <h6>Followers</h6>
       </nav>
-      <% if @followers != nil? %>
-            <% @followers.each  do |follower| %>
+      <% if @user.followers != nil? %>
+            <% @user.followers.each  do |follower| %>
                 <p><%= follower.name %></p>
             <% end %>
         <% end %>
