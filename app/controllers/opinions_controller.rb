@@ -1,7 +1,14 @@
 class OpinionsController < ApplicationController
   def index
     @opinion = Opinion.new
-    @opinions = Opinion.includes(:user).includes(:comments)
+    # @opinions = Opinion.includes(:user).includes(:comments)
+    @opinions = []
+    current_user.following.each do |user|
+      user.opinions.each do |opinion| 
+        @opinions << opinion
+      end
+
+    end
     @users = User.all
     @comment = Comment.new
   end

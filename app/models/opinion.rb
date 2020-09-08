@@ -6,4 +6,5 @@ class Opinion < ApplicationRecord
 
   has_one_attached :clip
   default_scope { order('created_at DESC') }
+
 end
