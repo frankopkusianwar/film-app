@@ -24,9 +24,10 @@
       <%= f.label :videoLength %>
       <%= f.text_field :videoLength, class: 'form-control', placeholder: 'videoLength'%>
     </div>
-    <div class="form-group">
+    
+     <div class="form-group">
       <%= f.label :artType %>
-      <%= f.text_field :artType, class: 'form-control', placeholder: 'artType'%>
+      <%= select(:user, :artType, [['Music', 'Music'], ['Drawing', 'Drawing'], ['Film', 'Film'], ['Athlete', 'Athlete'], ['Dance', 'Dance'], ['Stage', 'Stage']], {}, {:class => 'form-control'}) %>
     </div>
     <div class="form-group">
       <%= f.label :featureImage %>

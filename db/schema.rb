@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_22_091352) do
+ActiveRecord::Schema.define(version: 2020_09_09_083609) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_22_091352) do
     t.string "opinion_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "comment_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -122,11 +123,13 @@ ActiveRecord::Schema.define(version: 2020_08_22_091352) do
     t.string "DOB"
     t.string "userType"
     t.text "bio"
-    t.string "nationality"
     t.boolean "approved", default: false
     t.string "notes"
     t.string "profile_type"
     t.integer "profile_id"
+    t.string "user_type"
+    t.text "short_bio"
+    t.string "nationality"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
