@@ -2,7 +2,7 @@
   <% if logged_in? || admin_logged_in? %>
     <%= render 'layouts/side'%>
     <header class='d-flex justify-content-between p-2 main'>
-      <h4 class="text-white">THE GUARD</h4>
+      <h4 class="text-white">TAIM AFRICA</h4>
       <% if current_user %>
         <%= link_to "Logout", logout_path,  class: "text-white", method: :delete %>
       <% elsif current_admin %>
@@ -12,7 +12,7 @@
   <% else %>
     <header class="container-fluid p-2">
       <nav class="d-flex justify-content-between">
-        <h4 class="text-white">THE GUARD</h4>
+        <h4 class="text-white">TAIM AFRICA</h4>
         <div>
           <%= link_to "Login", new_session_path, class: "text-white"  %>
           <%= link_to "SignUp", new_user_path, class: "text-white" %>
