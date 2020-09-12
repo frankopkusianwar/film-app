@@ -22,7 +22,7 @@ class OpinionsController < ApplicationController
     opinion = Opinion.new(params.require(:opinion).permit(:Text, :clip))
     opinion.user_id = session[:user_id]
     opinion.save
-    redirect_to opinions_new_path
+    redirect_to opinions_path
   end
 
   def destroy
@@ -31,18 +31,23 @@ class OpinionsController < ApplicationController
     redirect_to opinions_path
   end
 
-  def update
-    @opinion = opinion.find(params[:id])
-    if @opinion.update_attributes(params[:post])
-        redirect_to opinion_path(@opinion)
-        flash[:notice] = 'post was updated.'
-    else
-        render 'edit'
-    end
-end    
+  def edit
+    @opinion = Opinion.find(params[:id])
+  end
 
-    def edit
-        @opinion = opinion.find(params[:id])
+  def update
+    @opinion = Opinion.find(params[:id])
+    if @opinion.update(opinion_params)
+      redirect_to opinion_path(@opinion)
+    else
+      render 'edit'
     end
+  end
+
+  private
+  
+  def opinion_params
+    params.require(:opinion).permit(:text, :image)
+  end
 
 end

@@ -4,12 +4,9 @@
       <div class="cover_image mt-1 row"><%= image_tag @user.cover_image if @user.cover_image.attached? %></div>
       <nav class='opinion_nav mb-3 mt-3'>
       
-        <h6>Recent Posts</h6>
+        <h6>My Posts</h6>
         
       </nav>
-      <%= link_to "Delete", opinion_path, method: :delete, data: {confirm: "Really delete the post?"}, class: "delete-path" %>
-        <%= link_to "Edit", opinion_path, method: :edit, data: {confirm: "Really edit the post?"}, class: "delete-path" %>
-      
       
       <%= render 'user_posts'%>
 
