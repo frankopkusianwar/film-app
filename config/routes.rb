@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   resources :followings, only: [:create, :destroy]
   get 'projects/new', to: 'projects#new'
   post 'projects/new', to: 'projects#create'
+  get 'opinions/new', to: 'opinions#new'
+  post 'opinions/new', to: 'opinions#create'
+
+
 end

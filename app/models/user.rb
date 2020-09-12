@@ -49,4 +49,9 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    AdminMailer.new_user_waiting_for_approval(email).deliver
+  end
 end

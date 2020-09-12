@@ -1,4 +1,9 @@
 class OpinionsController < ApplicationController
+
+  def new
+     @opinion  = Opinion.new
+  end
+  
   def index
     @opinion = Opinion.new
     @opinions = Opinion.includes(:user).includes(:comments)
@@ -17,7 +22,7 @@ class OpinionsController < ApplicationController
     opinion = Opinion.new(params.require(:opinion).permit(:Text, :clip))
     opinion.user_id = session[:user_id]
     opinion.save
-    redirect_to opinions_path
+    redirect_to opinions_new_path
   end
 
   def destroy
@@ -25,4 +30,19 @@ class OpinionsController < ApplicationController
     @opinion.destroy
     redirect_to opinions_path
   end
+
+  def update
+    @opinion = opinion.find(params[:id])
+    if @opinion.update_attributes(params[:post])
+        redirect_to opinion_path(@opinion)
+        flash[:notice] = 'post was updated.'
+    else
+        render 'edit'
+    end
+end    
+
+    def edit
+        @opinion = opinion.find(params[:id])
+    end
+
 end
