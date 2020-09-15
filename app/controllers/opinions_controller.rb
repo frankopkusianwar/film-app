@@ -3,6 +3,10 @@ class OpinionsController < ApplicationController
   def new
      @opinion  = Opinion.new
   end
+
+  def show
+    @opinion = Opinion.find(params[:id])
+  end
   
   def index
     @opinion = Opinion.new
@@ -19,7 +23,7 @@ class OpinionsController < ApplicationController
   end
 
   def create
-    opinion = Opinion.new(params.require(:opinion).permit(:Text))
+    opinion = Opinion.new(params.require(:opinion).permit(:Text, :clip, :image, :video, :file))
     opinion.user_id = session[:user_id]
     opinion.save
     redirect_to opinions_path
@@ -36,9 +40,11 @@ class OpinionsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @opinion = Opinion.find(params[:id])
     if @opinion.update(opinion_params)
-      redirect_to opinion_path(@opinion)
+     
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
@@ -47,7 +53,7 @@ class OpinionsController < ApplicationController
   private
 
   def opinion_params  
-    params.require(:opinion).permit(:Text)
+    params.require(:opinion).permit(:Text, :clip, :image, :video, :file)
   end
 
 end

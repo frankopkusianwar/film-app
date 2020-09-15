@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :opinions, only: [:create, :index, :destroy, :edit, :update] do
+  resources :opinions, only: [:create, :index, :destroy, :edit, :update, :show] do
     resources :likes, only: %i[create destroy]
   end
   resources :comments, only: [:create, :new] 
