@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/admin_login', to: 'admin_sessions#new'
   post '/admin_login', to: 'admin_sessions#create'
   delete '/admin_logout', to: 'admin_sessions#destroy'
+  get '/admin_approve', to: 'admins#approve'
+  post "/admin_approve/:id", to: 'admins#update_approval'
   resources :admins, only: [:create, :index, :new]
 
   
