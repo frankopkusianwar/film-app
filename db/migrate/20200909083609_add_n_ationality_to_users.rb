@@ -1,4 +1,4 @@
-class AddUserTypeToUsers < ActiveRecord::Migration[6.0]
+class AddNAtionalityToUsers < ActiveRecord::Migration[6.0]
   def change
     add_column :users, :nationality, :string
   end

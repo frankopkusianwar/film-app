@@ -3,13 +3,20 @@
     <div class="col-9">
       <div class="cover_image mt-1 row"><%= image_tag @user.cover_image if @user.cover_image.attached? %></div>
       <nav class='opinion_nav mb-3 mt-3'>
-        <h6>Recent Opinions</h6>
+      
+        <h6>My Posts</h6>
+        
       </nav>
+      
       <%= render 'user_posts'%>
+
     </div>
+    
     <div class="col-3 col-left-border">
+    
         <%= render 'user_stats'%>
         <%= render 'follow_list'%>
+        
     </div>
   </div>
 </div>

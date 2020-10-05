@@ -7,13 +7,14 @@
           <div class="font-weight-bold">
             <%# <%= op.user.name %>
             <span class='opinion-date'> <%= op.created_at.strftime("%Y/%m/%d") %></span>
-             <%= link_to "Delete", opinion_path(op.id), method: :delete, data: {confirm: "Really delete the post?"}, class: "delete-path" %>
+            
             <p class="font-weight-normal"><%= op.Text %></p>
+
             <% if op.clip.content_type == "video/mp4" %>
-              <%= video_tag url_for(op.clip), controls: "", class: ""%>
+            <%= video_tag url_for(op.clip), controls: "", class: ""%>
             <%else%>
-              <%= image_tag url_for(op.clip), class: "img-fluid" %>
-            <% end %>
+             <%= image_tag url_for(op.clip), class: "img-fluid" %>
+          <% end %>
             <div class='post-liking'>
               <%= like_or_dislike_btn(op) %>
               <p><%= pluralize(op.likes.count, "Like")%>
@@ -25,7 +26,7 @@
               <% op.comments.each do |com| %>
                 <div class="border-bottom">
                   <%= com.content %><br>
-                  <small class="ml-2">By: <%= com.user.name%></small>
+                  <small class="ml-2">By: <%= com.user.username%></small>
               </div>
           <%end%>
         </div>

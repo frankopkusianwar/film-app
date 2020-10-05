@@ -12,4 +12,16 @@ module OpinionsHelper
     @opinion = opinion
     render 'opinions/user_opinions'
   end
+
+  def file_type(filename)
+    types = {
+      :jpeg => "image",
+      :jpg => "image",
+      :gif => "image",
+      :png => "image",
+      :mp4 => "video", 
+      :mkv => "video"
+    }
+    types[filename.split(".").last.to_s to_set]
+ end
 end
