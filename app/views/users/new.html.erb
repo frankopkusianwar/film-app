@@ -11,7 +11,7 @@
     <%end%>
     <div class="form-group">
       <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control', placeholder: 'username'%>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'username'%>
     </div>
     <div class="form-group">
       <%= f.label :firstName %>
@@ -29,23 +29,14 @@
       <%= f.label :phone %>
       <%= f.text_field :phone, class: 'form-control', placeholder: 'phone'%>
     </div>
-    
     <div class="form-group">
       <%= f.label :DOB %>
       <%= f.date_field :DOB, class: 'form-control', placeholder: ''%>
     </div>
-
-     <div class="form-group">
-      <%= f.label :userType %>
-      <%= select(:user, :userType, [['Company', 'Company'], ['Personal', 'Personal'], ['Organisation', 'Organisation']], {}, {:class => 'form-control'}) %>
-    </div>
-
-     
     <div class="form-group">
-      <%= f.label :short_bio %>
-      <%= f.text_field :short_bio, class: 'form-control', placeholder: 'short_bio'%>
+      <%= f.label :UserType %>
+      <%= f.text_field :userType, class: 'form-control', placeholder: 'User Type'%>
     </div>
-    
     <div class="form-group">
       <%= f.label :state %>
       <%= f.text_field :state, class: 'form-control', placeholder: 'state'%>
@@ -54,9 +45,8 @@
       <%= f.label :Nationality %>
       <%= f.text_field :nationality, class: 'form-control', placeholder: 'nationality'%>
     </div>
-   
     <div class="form-group">
-      <%= f.label :Password %>
+      <%= f.label :password %>
       <%= f.text_field :password, class: 'form-control', placeholder: 'password'%>
     </div>
     

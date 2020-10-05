@@ -1,7 +1,7 @@
 <div class="row">
   <div class="prof-img d-flex justify-content-center mt-3"><%= image_tag @user.image if @user.image.attached? %></div>
-  <div class="col-12 d-flex justify-content-center"><h6><%= @user.username %></h6></div>
-  <div class="col-12 d-flex justify-content-center mb-3"><small class="text-muted">@<%= @user.username %></small></div>
+  <div class="col-12 d-flex justify-content-center"><h6><%= @user.name %></h6></div>
+  <div class="col-12 d-flex justify-content-center mb-3"><small class="text-muted">@<%= @user.name %></small></div>
   <div class="col-12 d-flex justify-content-center">
     <h6><%= render 'follow_form' unless @user == current_user%></h6>
     <small class="mb-3"><%= render 'edit_form' if @user == current_user%></small>
