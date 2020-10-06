@@ -4,6 +4,10 @@
       <div class="form-group">
         <%= f.text_field :Text, required: true, class: 'form-control', placeholder: 'Share your Opinion on farming'%>
       </div>
+      <div class="form-group">
+        <div><%= f.label :Clip %></div>
+        <div><%= f.file_field :clip %></div>  
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     <% end %>
   </div>

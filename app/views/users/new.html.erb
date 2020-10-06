@@ -10,13 +10,47 @@
       <%end%>
     <%end%>
     <div class="form-group">
-      <%= f.label :fullname %>
-      <%= f.text_field :fullname, class: 'form-control', placeholder: 'fullname'%>
+      <%= f.label :username %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'username'%>
     </div>
     <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control', placeholder: 'username'%>
+      <%= f.label :firstName %>
+      <%= f.text_field :firstName, class: 'form-control', placeholder: 'firstName'%>
     </div>
-    <button type="submit" class="btn btn-primary">Create Acccount</button>
+    <div class="form-group">
+      <%= f.label :lastName %>
+      <%= f.text_field :lastName, class: 'form-control', placeholder: 'lastName'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'email'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control', placeholder: 'phone'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :DOB %>
+      <%= f.date_field :DOB, class: 'form-control', placeholder: ''%>
+    </div>
+    <div class="form-group">
+      <%= f.label :UserType %>
+      <%= f.text_field :userType, class: 'form-control', placeholder: 'User Type'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :state %>
+      <%= f.text_field :state, class: 'form-control', placeholder: 'state'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :Nationality %>
+      <%= f.text_field :nationality, class: 'form-control', placeholder: 'nationality'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.text_field :password, class: 'form-control', placeholder: 'password'%>
+    </div>
+    
+        <button type="submit" class="btn btn-primary">Create Acccount</button>
+
   <% end %>
 </div>

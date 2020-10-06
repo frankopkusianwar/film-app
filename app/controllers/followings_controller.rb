@@ -10,4 +10,8 @@ class FollowingsController < ApplicationController
     current_user.unfollow(user)
     redirect_to opinions_path
   end
+
+  def show
+  
+  end
 end

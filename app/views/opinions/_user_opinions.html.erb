@@ -2,23 +2,34 @@
   <% @opinions.each do |op|%>
     <div class="bg-white mt-2">
       <div class="row ml-3">
-        <div class="col-6 p-1 mt-1 prof-img-3 d-flex">
+        <div class="col-12 p-1 mt-1 d-flex">
           <%= image_tag op.user.image, class: "mr-2" if op.user.image.attached? %>
           <div class="font-weight-bold">
-            <%= op.user.fullname %>
+            <%# <%= op.user.name %>
+            <span class='opinion-date'> <%= op.created_at.strftime("%Y/%m/%d") %></span>
+             <%= link_to "Delete", opinion_path(op.id), method: :delete, data: {confirm: "Really delete the post?"}, class: "delete-path" %>
             <p class="font-weight-normal"><%= op.Text %></p>
+            <% if op.clip.content_type == "video/mp4" %>
+              <%= video_tag url_for(op.clip), controls: "", class: ""%>
+            <%else%>
+              <%= image_tag url_for(op.clip), class: "img-fluid" %>
+            <% end %>
+            <div class='post-liking'>
+              <%= like_or_dislike_btn(op) %>
+              <p><%= pluralize(op.likes.count, "Like")%>
+            </div>
             <% @op = op %>
             <%= render 'comment_form'%>
-          </div>
-        </div>
-        <div class="col-6">
-          <p class="font-weight-bold">Comments<small>(<%= op.comments.count %>)</small></p>
-          <% op.comments.each do |com| %>
-            <div class="border-bottom">
-              <%= com.content %><br>
-              <small class="ml-2">By: <%= com.user.username%></small>
-            </div>
+            <div class="">
+              <p class="font-weight-bold">Comments<small>(<%= op.comments.count %>)</small></p>
+              <% op.comments.each do |com| %>
+                <div class="border-bottom">
+                  <%= com.content %><br>
+                  <small class="ml-2">By: <%= com.user.name%></small>
+              </div>
           <%end%>
+        </div>
+          </div>
         </div>
       </div>
     </div>

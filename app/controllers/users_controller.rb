@@ -1,6 +1,18 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [:show]
+
   def new
     @user = User.new
+  end
+
+  def following
+    @user = User.find_by(params[:id])
+    @following = @user.following
+  end
+
+  def followers 
+    @user = User.find_by(params[:id])
+    @followers = @user.followers
   end
 
   def edit
@@ -23,19 +35,26 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:fullname, :username))
+    @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB))
     if @user.save
-      log_in @user
-      redirect_to opinions_path
+      redirect_to new_project_path
     else
       @errors = @user.errors.full_messages
       render 'users/new'
     end
   end
 
-  private
+  def check_user
+    redirect_to root_path if current_user != User.find(params[:id])
 
-  def user_params
-    params.require(:user).permit(:fullname, :username, :image, :cover_image)
+    flash[:alert] = 'You can only see your own profile.' if current_user != User.find(params[:id])
   end
+
+
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB)
+  end
+
 end

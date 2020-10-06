@@ -1,17 +1,22 @@
 
-  <% if logged_in? %>
+  <% if logged_in? || admin_logged_in? %>
     <%= render 'layouts/side'%>
     <header class='d-flex justify-content-between p-2 main'>
       <h4 class="text-white">THE GUARD</h4>
-      <%= link_to "Logout", logout_path,  class: "text-white", method: :delete %>
+      <% if current_user %>
+        <%= link_to "Logout", logout_path,  class: "text-white", method: :delete %>
+      <% elsif current_admin %>
+        <%= link_to "Logout", admin_logout_path,  class: "text-white", method: :delete %>
+      <% end %>
     </header>
   <% else %>
     <header class="container-fluid p-2">
       <nav class="d-flex justify-content-between">
         <h4 class="text-white">THE GUARD</h4>
         <div>
-          <%= link_to "Login", root_path, class: "text-white"  %>
+          <%= link_to "Login", new_session_path, class: "text-white"  %>
           <%= link_to "SignUp", new_user_path, class: "text-white" %>
+          <%= link_to "Admin", new_admin_path, class: "text-white" %>
         </div>
       </nav>
     </header>
