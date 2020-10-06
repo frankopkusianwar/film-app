@@ -32,10 +32,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:username, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB, :user_type, :short_bio))
+    @user = User.new(params.require(:user).permit(:name, :email, :phone, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB))
     if @user.save
-      log_in(@user)
-      redirect_to projects_new_path
+      redirect_to new_project_path
     else
       @errors = @user.errors.full_messages
       render 'users/new'
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:username, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB, :user_type, :short_bio)
+    params.require(:user).permit(:name, :email, :phone, :image, :cover_image, :password, :state, :nationality, :firstName, :lastName, :userType, :DOB)
   end
 
 end

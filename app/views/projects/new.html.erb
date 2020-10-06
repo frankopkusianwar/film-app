@@ -2,7 +2,7 @@
   <div class="text-center">
     <h3>Add Project</h3>
   </div>
-  <%= form_for :project  do |f| %>
+  <%= form_with model: @project, local: true do |f| %>
     <%if @errors%>
       <%@errors.each do |err|%>
         <small class="text-danger"><%= err%></small><br>
@@ -24,12 +24,10 @@
       <%= f.label :videoLength %>
       <%= f.text_field :videoLength, class: 'form-control', placeholder: 'videoLength'%>
     </div>
-    
-     <div class="form-group">
+    <div class="form-group">
       <%= f.label :artType %>
       <%= select(:project, :artType, [['Music', 'Music'], ['Drawing', 'Drawing'], ['Film', 'Film'], ['Athlete', 'Athlete'], ['Dance', 'Dance'], ['Stage', 'Stage']], {}, {:class => 'form-control'}) %>
-    </div>
-
+   
     <div class="form-group">
       <%= f.label :featureImage %>
       <%= f.file_field :featureImage, class: 'form-control', placeholder: ''%>

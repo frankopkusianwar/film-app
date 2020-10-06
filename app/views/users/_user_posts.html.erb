@@ -5,7 +5,7 @@
         <div class="col-6 p-1 mt-1 prof-img-3 d-flex">
           <%= image_tag op.user.image, class: "mr-2" if op.user.image.attached? %>
           <div class="font-weight-bold">
-            <%= op.user.username %>
+            <%= op.user.name %>
             <p class="font-weight-normal"><%= op.Text %></p>
           </div>
         </div>
@@ -17,10 +17,6 @@
               <small class="ml-2">By: <%= com.user.username%></small>
             </div>
           <%end%>
-        </div>
-        <div class="col-6 ">
-        <%= link_to "Delete post", op, method: :delete, data: {confirm: "Really delete the post?"}, class: "delete-path btn" %>
-        <%= link_to 'Edit Post', edit_opinion_path(op), class: "text-decoration-none text-muted", class: "edit-path btn" %>
         </div>
       </div>
     </div>

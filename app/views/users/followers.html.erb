@@ -4,8 +4,7 @@
       </nav>
       <% if @user.followers != nil? %>
             <% @user.followers.each  do |follower| %>
-                <p><%= follower.username %></p>
+                <p><%= follower.name %></p>
             <% end %>
         <% end %>
-          <div>@<%= @user.username %></div>
 </div>

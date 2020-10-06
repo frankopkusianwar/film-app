@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  validates :username, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :phone, presence: true
   validates :email, presence: true
+  validates :name, presence: true
   validates :firstName, presence: true
   validates :lastName, presence: true
   validates :DOB, presence: true
@@ -47,10 +48,5 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
-  end
-
-  after_create :send_admin_mail
-  def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(email).deliver
   end
 end

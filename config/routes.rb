@@ -20,12 +20,10 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :opinions, only: [:create, :index, :destroy, :edit, :update, :show] do
+  resources :opinions, only: [:create, :index, :destroy] do
     resources :likes, only: %i[create destroy]
   end
   resources :comments, only: [:create, :new] 
   resources :followings, only: [:create, :destroy]
-  get 'projects/new', to: 'projects#new'
-  post 'projects/new', to: 'projects#create'
-  
+  resources :projects
 end
