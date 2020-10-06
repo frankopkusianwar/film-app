@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_062139) do
+ActiveRecord::Schema.define(version: 2020_10_06_081837) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_062139) do
     t.string "function"
     t.string "email"
     t.string "password"
+    t.string "name"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_062139) do
     t.string "videoLength"
     t.string "artType"
     t.integer "user_id"
+    t.string "art_type"
   end
 
   create_table "states", force: :cascade do |t|
